@@ -3,7 +3,7 @@ import PokeCard from "../components/poke-card";
 
 export default async function Home() {
 
-  const pokeList = await getPokemonList();
+  const pokeList = await getPokemonList(151, 0);
 
   return (
     <main>
