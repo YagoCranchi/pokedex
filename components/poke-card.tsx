@@ -2,6 +2,7 @@ import { getPokemon } from "../lib/pokemonApi";
 import FirstUpperCase from "../utils/formatter";
 import Link from "next/link";
 import "../public/css/types.scss";
+import Image from "next/image";
 
 interface PokeCardProps {
   pokeList: any;
@@ -31,7 +32,7 @@ export default function PokeCard({ pokeList }: PokeCardProps) {
             </div>
             <div className="flex">
               <div className="w-2/3">
-                <img src={pokemonImage} alt={pokemonName} className="w-full" />
+                <Image src={pokemonImage} width={500} height={500} alt={pokemonName} className="w-full" />
               </div>
               <div className="w-1/3 flex flex-col gap-2 mt-3">
                 <div className="flex flex-col gap-3 w-fit">
