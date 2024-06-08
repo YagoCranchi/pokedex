@@ -2,7 +2,7 @@ import { getPokemon } from "../../../lib/pokemonApi";
 import Link from "next/link";
 import { PokemonImage } from "@/components/poke-image";
 import { Progress } from "@/components/ui/progress";
-import FirstUpperCase from "@/utils/formatter";
+import { FormatPokemonName } from "@/utils/formatter";
 
 export default async function PokemonPage({
   params,
@@ -19,7 +19,7 @@ export default async function PokemonPage({
     <>
       <Link href="/"> Home</Link>
 
-      <h1>{FirstUpperCase(pokemonObject.name)}</h1>
+      <h1>{FormatPokemonName(pokemonObject.name)}</h1>
       {imageUrl && (
         <div className="m-4 relative w-60 h-60">
           <PokemonImage image={imageUrl} name={pokemonName} />
@@ -33,7 +33,7 @@ export default async function PokemonPage({
 
           return (
             <div
-              className="flex items-stretch w[500px] bg-slate-600"
+              className="flex items-stretch w[500px]"
               key={statName}
             >
               <h3 className="p-3 w-2/4">

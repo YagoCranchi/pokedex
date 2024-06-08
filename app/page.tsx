@@ -1,13 +1,13 @@
-import { getPokemonList } from "../lib/pokemonApi";
-import PokeCard from "../components/poke-card";
+import NavBar from "@/components/navbar";
+import { PokemonGrid } from "@/components/pokemon-grid";
+import { getPokemonList } from "@/lib/pokemonApi";
 
 export default async function Home() {
-
-  const pokeList = await getPokemonList(151, 0);
-
+  const pokemonList = await getPokemonList(151, 0);
   return (
     <main>
-      <PokeCard pokeList={pokeList} />
+      <NavBar/>
+      <PokemonGrid pokemonList={pokemonList}/>
     </main>
   );
 }
