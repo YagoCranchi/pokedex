@@ -24,23 +24,21 @@ export default function SearchPokemon() {
         });
     }, []);
 
-    const lowerCaseSearchText = searchText.toLocaleLowerCase();
-
-    const searchFilter = useCallback((pokemonList: any[]) => {
+    const searchFilter = useCallback((pokemonList: any[], value: string) => {
         return pokemonList.filter(pokemon =>
-            pokemon.name.toLowerCase().includes(lowerCaseSearchText)
+            pokemon.name.toLowerCase().includes(value.toLocaleLowerCase())
         );
-    }, [lowerCaseSearchText]);
-
+    }, []);
+    
     const fetchPokemonDetails = useCallback(async (value: string) => {
+        setSearchText(value);
+    
         if (value) {
-            setSearchText(value);
-            const limitedPokemonList = searchFilter(allPokeData).slice(0, 10);
+            const limitedPokemonList = searchFilter(allPokeData, value).slice(0, 10);
             const pokemonPromises = limitedPokemonList.map((pokemon: any) => getPokemon(pokemon.name));
             const details = await Promise.all(pokemonPromises);
             setPokeData(details);
         } else {
-            setSearchText("");
             setPokeData([]);
         }
     }, [allPokeData, searchFilter]);

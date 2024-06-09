@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SearchPokemon from "./ui/search-pokemon"
 
 export default function NavBar() {
@@ -5,13 +6,13 @@ export default function NavBar() {
         <>
             <div>
                 <div className="flex justify-between items-center p-4">
-                    <div className="text-2xl font-bold">Pokemon</div>
+                    <Link href="/" className="text-2xl font-bold">Pokemon</Link>
                     <div className="flex gap-5">
                         <SearchPokemon />
-                        <nav>
-                            <a href="/pokemon" className="mr-4">Home</a>
+                        {/* <nav>
+                            <a href="/" className="mr-4">Home</a>
                             <a href="/pokemon/about">About</a>
-                        </nav>
+                        </nav> */}
                     </div>
                 </div>
             </div>

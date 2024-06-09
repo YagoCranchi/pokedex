@@ -1,11 +1,11 @@
-import { getPokemon } from "../lib/pokemonApi";
-import { FormatPokemonName } from "../utils/formatter";
+import { getPokemon } from "../../lib/pokemonApi";
+import { FormatPokemonName } from "../../utils/formatter";
 import Link from "next/link";
-import "../public/css/types.scss";
+import "../../public/css/types.scss";
 import Image from "next/image";
 import { useEffect, useState } from 'react';
-import { LoadingSpinner } from "./ui/loading-spinner";
 import { PokemonDetails } from "@/interfaces/pokemon";
+import CardSkeleton from "./card-skeleton";
 
 interface PokeCardProps {
   pokeName: string;
@@ -22,9 +22,7 @@ export default function PokeCard({ pokeName }: PokeCardProps) {
   if (!pokeData) {
     return (
       <>
-        <div className="w-full h-60 flex justify-center flex-col">
-          <LoadingSpinner size={50} className="m-auto" />
-        </div>
+        <CardSkeleton />
       </>
     );
   }
@@ -40,13 +38,13 @@ export default function PokeCard({ pokeName }: PokeCardProps) {
         key={pokemonName}
         href={`pokemon/` + pokemonName}
         className={
-          "type-bg bg-hover rounded-md h-full w-1/4 transition-all duration-300 px-4 py-2 text-white " +
+          "h-full sm:max-w-[250px] max-w-full w-full px-4 py-2 type-bg bg-hover rounded-md transition-all duration-300 text-white " +
           pokemonMainType
         }
       >
-        <div className="font-bold text-lg w-full text-center">
+        <span className="block font-bold text-lg w-full text-center">
           {FormatPokemonName(pokemonName)}
-        </div>
+        </span>
         <div className="flex">
           <div className="w-2/3">
             <Image
